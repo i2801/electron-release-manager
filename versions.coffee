@@ -22,7 +22,7 @@ module.exports = (fn) ->
 
   # s3 = new AWS.S3()
   s3 = new AWS.S3( {
-      endpoint: 'ap-northeast-2.amazonaws.com',
+#      endpoint: 'mscore.amazonaws.com',
       signatureVersion: 'v4',
       region: 'ap-northeast-2'
   } );
