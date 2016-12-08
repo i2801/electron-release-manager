@@ -11,7 +11,7 @@
   "env": {
     "APP_NAME": {
       "description": "Name of the app you're releasing.",
-      "value": "my-cool-app",
+      "value": "Mscore",
       "required": true
     },
     "AWS_ACCESS_KEY_ID": {
