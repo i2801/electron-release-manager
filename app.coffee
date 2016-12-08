@@ -74,7 +74,7 @@ app.get "/", (req, res) ->
     appVersions (err, versions) ->
       if err
         res.status(500)
-        res.send "Could not lookup latest version."
+        res.send "Could not lookup latest version.."
         return
 
       latest = versions[0]
