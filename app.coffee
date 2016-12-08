@@ -64,7 +64,7 @@ formatVersion = (v, platform, installer) ->
 
   data = {
     version: v.version,
-    url: url,
+    url: url + "..",
     pub_date: v.pub_date
   }
   data
