@@ -125,53 +125,10 @@ app.get "/RELEASES", (req, res) ->
     res.status(204)
     res.end()
 
-
-app.get "/RELEASES2", (req, res) ->
-  if req.query.version
-    appVersions (err, versions) ->
-      if err
-        res.status(500)
-        res.send "Could not lookup latest version.."
-        return
-
-      latest = versions[0]
-      if ! semver.valid(req.query.version)
-        res.status(400)
-        cleanVersion = semver.clean(req.query.version)
-        suggestion = ""
-        if cleanVersion
-          suggestion = "Did you mean '#{cleanVersion}'?"
-        res.send "Invalid version: #{req.query.version}." + suggestion
-      else if semver.lt(req.query.version, latest.version)
-        data = formatVersion latest, req.query.arch
-        # res.json data
-        # res.redirect data.url
-        # res.redirect 'http://mscore.s3.amazonaws.com/0.0.2/RELEASES'
-        res.redirect 'https://mscore-release-server.herokuapp.com/download'
-      else
-        res.status(204)
-        res.end()
-  else
-    res.status(204)
-    res.end()
-
-
 app.get "/Mscore-0.0.2-full.nupkg", (req, res) ->
   appVersions (err, versions) ->
     res.redirect 'http://mscore.s3.amazonaws.com/0.0.2/Mscore-0.0.2-full.nupkg'
 
-
-app.get "/download", (req, res) ->
-  appVersions (err, versions) ->
-    if err
-      res.status(500)
-      res.send("Could not grab latest version")
-      return
-
-    latest = versions[0]
-    data = formatVersion latest, req.query.platform, true
-    # res.redirect data.url
-    res.redirect 'http://mscore.s3.amazonaws.com/0.0.2/Mscore-0.0.2-full.nupkg'
 
 
 app.get "/latest", (req, res) ->
