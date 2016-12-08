@@ -16,17 +16,17 @@
     },
     "AWS_ACCESS_KEY_ID": {
       "description": "Your AWS access key.",
-      "value": "ABCD12345678",
+      "value": "AKIAJVFRCZOVKKMLXRKA",
       "required": true
     },
     "AWS_SECRET_ACCESS_KEY": {
       "description": "Your AWS secret key.",
-      "value": "AQWEIFOGSDFOW82392/ER9",
+      "value": "MjJJiAxv88K/CKjxl7549cK5rwdy3+wd7zHXr1aB",
       "required": true
     },
     "BUCKET": {
       "description": "s3 bucket where your apps are distributed.",
-      "value": "s3://<bucket-name>/",
+      "value": "s3://mscore/",
       "required": true
     }
   }
