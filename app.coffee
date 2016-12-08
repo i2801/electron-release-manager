@@ -115,7 +115,7 @@ app.get "/RELEASES", (req, res) ->
         data = formatVersion latest, req.query.arch
         # res.json data
         # res.redirect data.url
-        res.redirect 'http://mscore.s3.amazonaws.com/0.0.2/RELEASES' #성공
+        res.redirect 'http://mscore.s3.amazonaws.com/0.0.2/RELEASES2' #성공
         # res.redirect 'http://mscore.s3.amazonaws.com/0.0.2/Mscore-0.0.2-full.nupkg'
         # res.redirect 'http://mscore.s3.amazonaws.com/0.0.2/Mscore-v0.0.2-windows_64.zip'
       else
