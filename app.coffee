@@ -105,6 +105,11 @@ app.get "/RELEASES", (req, res) ->
         return
 
       latest = versions[0]
+
+      res.status(500)
+      res.send latest
+      return
+
       if ! semver.valid(req.query.version)
         res.status(400)
         cleanVersion = semver.clean(req.query.version)
