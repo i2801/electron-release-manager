@@ -44,7 +44,7 @@ platformMap = {
   "darwin_x64": "darwin_x64"
   "darwin": "darwin_x64"
   "osx": "darwin_x64"
-  "windows_64": "windows_x64"
+  "windows_64", "amd64": "windows_x64"
   "windows_32": "windows_ia32"
   "linux_64": "linux_64"
   "linux_32": "linux_32"
