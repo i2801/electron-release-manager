@@ -96,15 +96,30 @@ app.get "/", (req, res) ->
     res.end()
 
 app.get "/RELEASES", (req, res) ->
-  appVersions (err, versions) ->
-    if err
-      res.status(500)
-      res.send("Could not grab latest version")
-      return
+  if req.query.version
+    appVersions (err, versions) ->
+      if err
+        res.status(500)
+        res.send "Could not lookup latest version.."
+        return
 
-    latest = versions[0]
-    data = formatVersion latest, req.query.platform, true
-    res.json data
+      latest = versions[0]
+      if ! semver.valid(req.query.version)
+        res.status(400)
+        cleanVersion = semver.clean(req.query.version)
+        suggestion = ""
+        if cleanVersion
+          suggestion = "Did you mean '#{cleanVersion}'?"
+        res.send "Invalid version: #{req.query.version}." + suggestion
+      else if semver.lt(req.query.version, latest.version)
+        data = formatVersion latest, req.query.platform
+        res.json data
+      else
+        res.status(204)
+        res.end()
+  else
+    res.status(204)
+    res.end()
 
 
 
