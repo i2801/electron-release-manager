@@ -95,6 +95,19 @@ app.get "/", (req, res) ->
     res.status(204)
     res.end()
 
+app.get "/RELEASES", (req, res) ->
+  appVersions (err, versions) ->
+    if err
+      res.status(500)
+      res.send("Could not grab latest version")
+      return
+
+    latest = versions[0]
+    data = formatVersion latest, req.query.platform, true
+    res.redirect data.url
+
+
+
 app.get "/latest", (req, res) ->
   appVersions (err, versions) ->
     if err
