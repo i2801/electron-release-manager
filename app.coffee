@@ -115,7 +115,8 @@ app.get "/RELEASES", (req, res) ->
         data = formatVersion latest, req.query.arch
         # res.json data
         # res.redirect data.url
-        res.redirect 'http://mscore.s3.amazonaws.com/0.0.2/RELEASES'
+        # res.redirect 'http://mscore.s3.amazonaws.com/0.0.2/RELEASES'
+        res.send '<p>Found. Redirecting to <a href="http://mscore.s3.amazonaws.com/0.0.2/RELEASES">http://mscore.s3.amazonaws.com/0.0.2/RELEASES</a></p>'
       else
         res.status(204)
         res.end()
