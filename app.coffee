@@ -13,7 +13,6 @@ _ = require("underscore")
 semver = require("semver")
 appVersions = require("./versions")
 
-
 app = express()
 
 # setup templating
