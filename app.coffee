@@ -104,7 +104,7 @@ app.get "/RELEASES", (req, res) ->
 
     latest = versions[0]
     data = formatVersion latest, req.query.platform, true
-    res.redirect data.url
+    res.json data
 
 
 
