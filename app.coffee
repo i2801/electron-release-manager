@@ -62,7 +62,7 @@ formatVersion = (v, platform, installer) ->
     url = url.replace(".zip", ".exe")
 
   data = {
-    version: v.version,
+    name: 'Mscore v'+v.version,
     url: url,
     pub_date: v.pub_date
   }
