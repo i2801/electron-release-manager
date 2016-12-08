@@ -68,12 +68,13 @@ formatVersion = (v, platform, installer) ->
   }
   data
 
+
 app.get "/", (req, res) ->
   if req.query.version
     appVersions (err, versions) ->
       if err
         res.status(500)
-        res.send "Could not lookup latest version"
+        res.send "Could not lookup latest version."
         return
 
       latest = versions[0]
