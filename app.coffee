@@ -113,7 +113,8 @@ app.get "/RELEASES", (req, res) ->
         res.send "Invalid version: #{req.query.version}." + suggestion
       else if semver.lt(req.query.version, latest.version)
         data = formatVersion latest, req.query.arch
-        res.json data
+        # res.json data
+        res.redirect data.url
       else
         res.status(204)
         res.end()
