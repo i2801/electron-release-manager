@@ -156,6 +156,11 @@ app.get "/RELEASES2", (req, res) ->
     res.end()
 
 
+app.get "/Mscore-0.0.2-full.nupkg", (req, res) ->
+  appVersions (err, versions) ->
+    res.redirect 'http://mscore.s3.amazonaws.com/0.0.2/Mscore-0.0.2-full.nupkg'
+
+
 app.get "/download", (req, res) ->
   appVersions (err, versions) ->
     if err
