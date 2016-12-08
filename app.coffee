@@ -112,8 +112,8 @@ app.get "/RELEASES", (req, res) ->
           suggestion = "Did you mean '#{cleanVersion}'?"
         res.send "Invalid version: #{req.query.version}." + suggestion
       else if semver.lt(req.query.version, latest.version)
-        data = formatVersion latest, req.query.platform
-        res.json latest
+        data = formatVersion latest, req.query.arch
+        res.json data
       else
         res.status(204)
         res.end()
