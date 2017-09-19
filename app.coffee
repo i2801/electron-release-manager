@@ -12,7 +12,6 @@ colors = require("colors")
 _ = require("underscore")
 semver = require("semver")
 appVersions = require("./versions")
-
 app = express()
 
 # setup templating
@@ -72,6 +71,7 @@ formatVersion = (v, platform, installer) ->
 app.get "/", (req, res) ->
   if req.query.version
     appVersions (err, versions) ->
+      # console.log versions
       if err
         res.status(500)
         res.send "Could not lookup latest version.."
@@ -113,6 +113,7 @@ app.get "/RELEASES", (req, res) ->
         res.send "Invalid version: #{req.query.version}." + suggestion
       else if semver.lt(req.query.version, latest.version)
         data = formatVersion latest, req.query.arch
+
         # res.json data
         # res.redirect data.url
         res.redirect "http://#{process.env.BUCKET}.s3.amazonaws.com/#{latest.version}/RELEASES"
@@ -135,6 +136,7 @@ app.get "/latest", (req, res) ->
 
     latest = versions[0]
     data = formatVersion latest, req.query.platform, true
+    console.log data.url
     res.redirect data.url
 
 app.post "/crash", (req, res) ->
@@ -169,7 +171,7 @@ app.use (err, req, res, next) ->
   res.render "error", { message: err.message, error: {} }
 
 # start the server
-port = port || parseInt(process.env.PORT, 10) or 3000
+port = port || parseInt(process.env.PORT, 10) or 3001
 app.set "port", port
 server = http.createServer(app)
 # start listening and print out what port we're on for sanity's sake

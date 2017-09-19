@@ -8,7 +8,8 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
-    "start": "coffee app.coffee"
+    "start": "coffee app.coffee",
+    "dev": "BUCKET=mscore APP_NAME=Mscore coffee app.coffee"
   },
   "dependencies": {
     "aws-sdk": "^2.2.17",
